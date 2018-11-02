@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kz.dao.RecordMapper">
+    <resultMap id="RecordDTO" type="com.kz.dto.RecordDTO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="page_num" jdbcType="VARCHAR" property="pageNum" />
+        <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+        <result column="brand" jdbcType="VARCHAR" property="brand" />
+        <result column="cat" property="cat" jdbcType="VARCHAR" />
+        <result column="sku" property="sku" jdbcType="VARCHAR"/>
+        <result column="shop_price" property="shopPrice" jdbcType="VARCHAR" />
+        <result column="market_price" property="marketPrice" jdbcType="VARCHAR"/>
+        <result column="goods_desc" property="goodsDesc" jdbcType="VARCHAR"/>
+        <result column="logo" property="logo" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+        <result column="sp_price" property="spPrice" jdbcType="VARCHAR"/>
+        <result column="created" property="created" jdbcType="VARCHAR"/>
+        <result column="origin_data" property="originData" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="getRecordList" parameterType="map" resultMap="RecordDTO">
+        SELECT * FROM record
+        <where>
+            1=1
+        </where>
+        <if test="pageIndex != null">
+            <if test="pageSize != null">
+                LIMIT #{pageIndex},#{pageSize}
+            </if>
+        </if>
+    </select>
+
+    <insert id="insertRecord" parameterType="com.kz.dto.RecordDTO">
+        INSERT INTO record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pageNum != null">
+                page_num,
+            </if>
+            <if test="goodsName != null">
+                goods_name,
+            </if>
+            <if test="brand != null">
+                brand,
+            </if>
+            <if test="cat != null">
+                cat,
+            </if>
+            <if test="sku != null">
+                sku,
+            </if>
+            <if test="shopPrice != null">
+                shop_price,
+            </if>
+            <if test="marketPrice != null">
+                market_price,
+            </if>
+            <if test="goodsDesc != null">
+                goods_desc,
+            </if>
+            <if test="logo != null">
+                logo,
+            </if>
+            <if test="image != null">
+                image,
+            </if>
+            <if test="spPrice != null">
+                sp_price,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="originData != null">
+                origin_data
+            </if>
+        </trim>
+        <trim prefix=" VALUES (" suffix=")" suffixOverrides=",">
+            <if test="pageNum != null">
+                #{pageNum},
+            </if>
+            <if test="goodsName != null">
+                #{goodsName},
+            </if>
+            <if test="brand != null">
+                #{brand},
+            </if>
+            <if test="cat != null">
+                #{cat},
+            </if>
+            <if test="sku != null">
+                #{sku},
+            </if>
+            <if test="shopPrice != null">
+                #{shopPrice},
+            </if>
+            <if test="marketPrice != null">
+                #{marketPrice},
+            </if>
+            <if test="goodsDesc != null">
+                #{goodsDesc},
+            </if>
+            <if test="logo != null">
+                #{logo},
+            </if>
+            <if test="image != null">
+                #{image},
+            </if>
+            <if test="spPrice != null">
+                #{spPrice},
+            </if>
+            <if test="created != null">
+                #{created},
+            </if>
+            <if test="originData != null">
+                #{originData}
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

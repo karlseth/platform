@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kz.dao.EcsGoodsMapper">
+    <resultMap id="EcsCategoryDTO" type="com.kz.dto.EcsCategoryDTO">
+        <id column="cat_id" jdbcType="INTEGER" property="catId" />
+        <result column="cat_name" jdbcType="VARCHAR" property="catName" />
+        <result column="keyword" jdbcType="VARCHAR" property="keyword" />
+        <result column="cat_desc" jdbcType="VARCHAR" property="catDesc" />
+        <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+        <result column="sort_order" property="sortOrder" jdbcType="INTEGER"/>
+        <result column="template_file" property="templateFile" jdbcType="VARCHAR" />
+        <result column="measure_unit" property="measureUnit" jdbcType="VARCHAR"/>
+        <result column="show_in_nav" property="showInNav" jdbcType="INTEGER"/>
+        <result column="style" property="style" jdbcType="VARCHAR"/>
+        <result column="is_show" property="isShow" jdbcType="INTEGER"/>
+        <result column="grade" property="grade" jdbcType="INTEGER"/>
+        <result column="filter_arr" property="filterArr" jdbcType="VARCHAR"/>
+        <result column="cat_img" property="catImg" jdbcType="VARCHAR"/>
+        <result column="third_id" property="thirdId" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="getCategoryList" parameterType="map" resultMap="EcsCategoryDTO">
+        SELECT * FROM ecs_category
+        <where>
+            1=1
+        </where>
+        <if test="thirdId != null">
+            and third_id=#{thirdId}
+        </if>
+        <if test="catId != null">
+            and cat_id=#{catId}
+        </if>
+        <if test="parentId != null">
+            parent_id=#{parentId}
+        </if>
+        <if test="pageIndex != null">
+            <if test="pageSize != null">
+                LIMIT #{pageIndex},#{pageSize}
+            </if>
+        </if>
+    </select>
+
+    <insert id="insertCategory" parameterType="com.kz.dto.EcsCategoryDTO">
+        INSERT INTO ecs_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="catName != null">
+                cat_name,
+            </if>
+            <if test="keyword != null">
+                keyword,
+            </if>
+            <if test="catDesc != null">
+                cat_desc,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="sortOrder != null">
+                sort_order,
+            </if>
+            <if test="templateFile != null">
+                template_file,
+            </if>
+            <if test="measureUnit != null">
+                measure_unit,
+            </if>
+            <if test="showInNav != null">
+                show_in_nav,
+            </if>
+            <if test="style != null">
+                style,
+            </if>
+            <if test="isShow != null">
+                is_show,
+            </if>
+            <if test="grade != null">
+                grade,
+            </if>
+            <if test="filterArr != null">
+                filter_arr,
+            </if>
+            <if test="catImg != null">
+                cat_img,
+            </if>
+            <if test="thirdId != null">
+                third_id
+            </if>
+        </trim>
+        <trim prefix=" VALUES (" suffix=")" suffixOverrides=",">
+            <if test="catName != null">
+                #{catName},
+            </if>
+            <if test="keyword != null">
+                #{keyword},
+            </if>
+            <if test="catDesc != null">
+                #{catDesc},
+            </if>
+            <if test="parentId != null">
+                #{parentId},
+            </if>
+            <if test="sortOrder != null">
+                #{sortOrder},
+            </if>
+            <if test="templateFile != null">
+                #{templateFile},
+            </if>
+            <if test="measureUnit != null">
+                #{measureUnit},
+            </if>
+            <if test="showInNav != null">
+                #{showInNav},
+            </if>
+            <if test="style != null">
+                #{style},
+            </if>
+            <if test="isShow != null">
+                #{isShow},
+            </if>
+            <if test="grade != null">
+                #{grade},
+            </if>
+            <if test="filterArr != null">
+                #{filterArr},
+            </if>
+            <if test="catImg != null">
+                #{catImg},
+            </if>
+            <if test="thirdId != null">
+                #{thirdId}
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

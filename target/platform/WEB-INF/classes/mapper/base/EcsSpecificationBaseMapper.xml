@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="packageMapper.base.EcsSpecificationBaseMapper">
+
+
+
+
+
+    <update id="updateEcsSpecificationDTO">
+        UPDATE `ecs_specification`
+        SET
+        <trim suffixOverrides=",">
+            <if test="goodsId != null">
+                `goods_id` = #{goodsId},
+            </if>
+            <if test="specificationName != null and specificationName!=''">
+                `specification_name` = #{specificationName},
+            </if>
+            <if test="specificationPrice != null">
+                `specification_price` = #{specificationPrice},
+            </if>
+            <if test="specificationConsumeNum != null">
+                `specification_consume_num` = #{specificationConsumeNum},
+            </if>
+            <if test="isActivity != null">
+                `is_activity` = #{isActivity},
+            </if>
+            <if test="activityRelatedId != null">
+                `activity_related_id` = #{activityRelatedId},
+            </if>
+            <if test="isDel != null">
+                `is_del` = #{isDel},
+            </if>
+            <if test="yxSkuId != null and yxSkuId!=''">
+                `yx_sku_id` = #{yxSkuId},
+            </if>
+            <if test="inventory != null">
+                `inventory` = #{inventory},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `specification_id` = #{specificationId} and
+        </trim>
+    </update>
+
+    <update id="update">
+        UPDATE `ecs_specification`
+        SET
+        <trim suffixOverrides=",">
+        <if test="set.goodsId != null">
+            `goods_id` = #{set.goodsId},
+        </if>
+        <if test="set.specificationName != null and set.specificationName!=''">
+            `specification_name` = #{set.specificationName},
+        </if>
+        <if test="set.specificationPrice != null">
+            `specification_price` = #{set.specificationPrice},
+        </if>
+        <if test="set.specificationConsumeNum != null">
+            `specification_consume_num` = #{set.specificationConsumeNum},
+        </if>
+        <if test="set.isActivity != null">
+            `is_activity` = #{set.isActivity},
+        </if>
+        <if test="set.activityRelatedId != null">
+            `activity_related_id` = #{set.activityRelatedId},
+        </if>
+        <if test="set.isDel != null">
+            `is_del` = #{set.isDel},
+        </if>
+        <if test="set.yxSkuId != null and set.yxSkuId!=''">
+            `yx_sku_id` = #{set.yxSkuId},
+        </if>
+        <if test="set.inventory != null">
+            `inventory` = #{set.inventory},
+        </if>
+        </trim>
+        <trim prefix="where" suffixOverrides="and | or">
+                <if test="where.specificationIdList != null">
+                    `specification_id` in
+                    <foreach collection="where.specificationIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.specificationIdSt !=null">
+                `specification_id` >= #{where.specificationIdSt} and
+            </if>
+            <if test="where.specificationIdEd!=null">
+                `specification_id` &lt;= #{where.specificationIdEd} and
+            </if>
+                <if test="where.goodsIdList != null">
+                    `goods_id` in
+                    <foreach collection="where.goodsIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.goodsIdSt !=null">
+                `goods_id` >= #{where.goodsIdSt} and
+            </if>
+            <if test="where.goodsIdEd!=null">
+                `goods_id` &lt;= #{where.goodsIdEd} and
+            </if>
+                <if test="where.specificationNameList != null">
+                    `specification_name` in
+                    <foreach collection="where.specificationNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzySpecificationName!=null and where.fuzzySpecificationName.size()>0">
+                (
+                <foreach collection="where.fuzzySpecificationName"  separator="or" item="item">
+                    `Specification_name` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzySpecificationName!=null and where.rightFuzzySpecificationName.size()>0">
+                (
+                <foreach collection="where.rightFuzzySpecificationName"  separator="or" item="item">
+                    `Specification_name` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.specificationPriceList != null">
+                    `specification_price` in
+                    <foreach collection="where.specificationPriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.specificationPriceSt !=null">
+                `specification_price` >= #{where.specificationPriceSt} and
+            </if>
+            <if test="where.specificationPriceEd!=null">
+                `specification_price` &lt;= #{where.specificationPriceEd} and
+            </if>
+                <if test="where.specificationConsumeNumList != null">
+                    `specification_consume_num` in
+                    <foreach collection="where.specificationConsumeNumList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.specificationConsumeNumSt !=null">
+                `specification_consume_num` >= #{where.specificationConsumeNumSt} and
+            </if>
+            <if test="where.specificationConsumeNumEd!=null">
+                `specification_consume_num` &lt;= #{where.specificationConsumeNumEd} and
+            </if>
+                <if test="where.isActivityList != null">
+                    `is_activity` in
+                    <foreach collection="where.isActivityList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.isActivitySt !=null">
+                `is_activity` >= #{where.isActivitySt} and
+            </if>
+            <if test="where.isActivityEd!=null">
+                `is_activity` &lt;= #{where.isActivityEd} and
+            </if>
+                <if test="where.activityRelatedIdList != null">
+                    `activity_related_id` in
+                    <foreach collection="where.activityRelatedIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.activityRelatedIdSt !=null">
+                `activity_related_id` >= #{where.activityRelatedIdSt} and
+            </if>
+            <if test="where.activityRelatedIdEd!=null">
+                `activity_related_id` &lt;= #{where.activityRelatedIdEd} and
+            </if>
+                <if test="where.isDelList != null">
+                    `is_del` in
+                    <foreach collection="where.isDelList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.isDelSt !=null">
+                `is_del` >= #{where.isDelSt} and
+            </if>
+            <if test="where.isDelEd!=null">
+                `is_del` &lt;= #{where.isDelEd} and
+            </if>
+                <if test="where.yxSkuIdList != null">
+                    `yx_sku_id` in
+                    <foreach collection="where.yxSkuIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyYxSkuId!=null and where.fuzzyYxSkuId.size()>0">
+                (
+                <foreach collection="where.fuzzyYxSkuId"  separator="or" item="item">
+                    `Yx_sku_id` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyYxSkuId!=null and where.rightFuzzyYxSkuId.size()>0">
+                (
+                <foreach collection="where.rightFuzzyYxSkuId"  separator="or" item="item">
+                    `Yx_sku_id` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.inventoryList != null">
+                    `inventory` in
+                    <foreach collection="where.inventoryList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.inventorySt !=null">
+                `inventory` >= #{where.inventorySt} and
+            </if>
+            <if test="where.inventoryEd!=null">
+                `inventory` &lt;= #{where.inventoryEd} and
+            </if>
+        </trim>
+    </update>
+
+
+    <resultMap type="packageModel.EcsSpecificationDTO" id="EcsSpecificationDTOMap">
+        <result property="specificationId" column="specification_id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="specificationName" column="specification_name"/>
+        <result property="specificationPrice" column="specification_price"/>
+        <result property="specificationConsumeNum" column="specification_consume_num"/>
+        <result property="isActivity" column="is_activity"/>
+        <result property="activityRelatedId" column="activity_related_id"/>
+        <result property="isDel" column="is_del"/>
+        <result property="yxSkuId" column="yx_sku_id"/>
+        <result property="inventory" column="inventory"/>
+    </resultMap>
+
+
+    <select id="queryEcsSpecificationDTO" resultMap="EcsSpecificationDTOMap">
+        select
+        <include refid="baseResult"></include>
+        from  `ecs_specification`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="specificationId != null">
+                `specification_id` = #{specificationId} and
+            </if>
+            <if test="goodsId != null">
+                `goods_id` = #{goodsId} and
+            </if>
+            <if test="specificationName != null and specificationName!=''">
+                `specification_name` = #{specificationName} and
+            </if>
+            <if test="specificationPrice != null">
+                `specification_price` = #{specificationPrice} and
+            </if>
+            <if test="specificationConsumeNum != null">
+                `specification_consume_num` = #{specificationConsumeNum} and
+            </if>
+            <if test="isActivity != null">
+                `is_activity` = #{isActivity} and
+            </if>
+            <if test="activityRelatedId != null">
+                `activity_related_id` = #{activityRelatedId} and
+            </if>
+            <if test="isDel != null">
+                `is_del` = #{isDel} and
+            </if>
+            <if test="yxSkuId != null and yxSkuId!=''">
+                `yx_sku_id` = #{yxSkuId} and
+            </if>
+            <if test="inventory != null">
+                `inventory` = #{inventory} and
+            </if>
+            <if test = "(_parameter instanceof packageModel.EcsSpecificationDTO$QueryBuilder) == true">
+                <if test="specificationIdList != null">
+                    `specification_id` in
+                    <foreach collection="specificationIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="specificationIdSt !=null">
+                    `specification_id` >= #{specificationIdSt} and
+                </if>
+                <if test="specificationIdEd!=null">
+                    `specification_id` &lt;= #{specificationIdEd} and
+                </if>
+                <if test="goodsIdList != null">
+                    `goods_id` in
+                    <foreach collection="goodsIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="goodsIdSt !=null">
+                    `goods_id` >= #{goodsIdSt} and
+                </if>
+                <if test="goodsIdEd!=null">
+                    `goods_id` &lt;= #{goodsIdEd} and
+                </if>
+                <if test="specificationNameList != null">
+                    `specification_name` in
+                    <foreach collection="specificationNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzySpecificationName!=null and fuzzySpecificationName.size()>0">
+                    (
+                    <foreach collection="fuzzySpecificationName"  separator="or" item="item">
+                        `Specification_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySpecificationName!=null and rightFuzzySpecificationName.size()>0">
+                    (
+                    <foreach collection="rightFuzzySpecificationName"  separator="or" item="item">
+                        `Specification_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="specificationPriceList != null">
+                    `specification_price` in
+                    <foreach collection="specificationPriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="specificationPriceSt !=null">
+                    `specification_price` >= #{specificationPriceSt} and
+                </if>
+                <if test="specificationPriceEd!=null">
+                    `specification_price` &lt;= #{specificationPriceEd} and
+                </if>
+                <if test="specificationConsumeNumList != null">
+                    `specification_consume_num` in
+                    <foreach collection="specificationConsumeNumList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="specificationConsumeNumSt !=null">
+                    `specification_consume_num` >= #{specificationConsumeNumSt} and
+                </if>
+                <if test="specificationConsumeNumEd!=null">
+                    `specification_consume_num` &lt;= #{specificationConsumeNumEd} and
+                </if>
+                <if test="isActivityList != null">
+                    `is_activity` in
+                    <foreach collection="isActivityList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="isActivitySt !=null">
+                    `is_activity` >= #{isActivitySt} and
+                </if>
+                <if test="isActivityEd!=null">
+                    `is_activity` &lt;= #{isActivityEd} and
+                </if>
+                <if test="activityRelatedIdList != null">
+                    `activity_related_id` in
+                    <foreach collection="activityRelatedIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="activityRelatedIdSt !=null">
+                    `activity_related_id` >= #{activityRelatedIdSt} and
+                </if>
+                <if test="activityRelatedIdEd!=null">
+                    `activity_related_id` &lt;= #{activityRelatedIdEd} and
+                </if>
+                <if test="isDelList != null">
+                    `is_del` in
+                    <foreach collection="isDelList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="isDelSt !=null">
+                    `is_del` >= #{isDelSt} and
+                </if>
+                <if test="isDelEd!=null">
+                    `is_del` &lt;= #{isDelEd} and
+                </if>
+                <if test="yxSkuIdList != null">
+                    `yx_sku_id` in
+                    <foreach collection="yxSkuIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyYxSkuId!=null and fuzzyYxSkuId.size()>0">
+                    (
+                    <foreach collection="fuzzyYxSkuId"  separator="or" item="item">
+                        `Yx_sku_id` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyYxSkuId!=null and rightFuzzyYxSkuId.size()>0">
+                    (
+                    <foreach collection="rightFuzzyYxSkuId"  separator="or" item="item">
+                        `Yx_sku_id` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="inventoryList != null">
+                    `inventory` in
+                    <foreach collection="inventoryList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="inventorySt !=null">
+                    `inventory` >= #{inventorySt} and
+                </if>
+                <if test="inventoryEd!=null">
+                    `inventory` &lt;= #{inventoryEd} and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryEcsSpecificationDTOLimit1" resultMap="EcsSpecificationDTOMap">
+        select
+        <include refid="baseResult"></include>
+        from  `ecs_specification`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="specificationId != null">
+                `specification_id` = #{specificationId} and
+            </if>
+            <if test="goodsId != null">
+                `goods_id` = #{goodsId} and
+            </if>
+            <if test="specificationName != null and specificationName!=''">
+                `specification_name` = #{specificationName} and
+            </if>
+            <if test="specificationPrice != null">
+                `specification_price` = #{specificationPrice} and
+            </if>
+            <if test="specificationConsumeNum != null">
+                `specification_consume_num` = #{specificationConsumeNum} and
+            </if>
+            <if test="isActivity != null">
+                `is_activity` = #{isActivity} and
+            </if>
+            <if test="activityRelatedId != null">
+                `activity_related_id` = #{activityRelatedId} and
+            </if>
+            <if test="isDel != null">
+                `is_del` = #{isDel} and
+            </if>
+            <if test="yxSkuId != null and yxSkuId!=''">
+                `yx_sku_id` = #{yxSkuId} and
+            </if>
+            <if test="inventory != null">
+                `inventory` = #{inventory} and
+            </if>
+            <if test = "(_parameter instanceof packageModel.EcsSpecificationDTO$QueryBuilder) == true">
+                    <if test="specificationIdList != null">
+                        `specification_id` in
+                        <foreach collection="specificationIdList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="specificationIdSt !=null">
+                    `specification_id` >= #{specificationIdSt} and
+                </if>
+                <if test="specificationIdEd!=null">
+                    `specification_id` &lt;= #{specificationIdEd} and
+                </if>
+                    <if test="goodsIdList != null">
+                        `goods_id` in
+                        <foreach collection="goodsIdList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="goodsIdSt !=null">
+                    `goods_id` >= #{goodsIdSt} and
+                </if>
+                <if test="goodsIdEd!=null">
+                    `goods_id` &lt;= #{goodsIdEd} and
+                </if>
+                    <if test="specificationNameList != null">
+                        `specification_name` in
+                        <foreach collection="specificationNameList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzySpecificationName!=null and fuzzySpecificationName.size()>0">
+                    (
+                    <foreach collection="fuzzySpecificationName"  separator="or" item="item">
+                        `Specification_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySpecificationName!=null and rightFuzzySpecificationName.size()>0">
+                    (
+                    <foreach collection="rightFuzzySpecificationName"  separator="or" item="item">
+                        `Specification_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="specificationPriceList != null">
+                        `specification_price` in
+                        <foreach collection="specificationPriceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="specificationPriceSt !=null">
+                    `specification_price` >= #{specificationPriceSt} and
+                </if>
+                <if test="specificationPriceEd!=null">
+                    `specification_price` &lt;= #{specificationPriceEd} and
+                </if>
+                    <if test="specificationConsumeNumList != null">
+                        `specification_consume_num` in
+                        <foreach collection="specificationConsumeNumList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="specificationConsumeNumSt !=null">
+                    `specification_consume_num` >= #{specificationConsumeNumSt} and
+                </if>
+                <if test="specificationConsumeNumEd!=null">
+                    `specification_consume_num` &lt;= #{specificationConsumeNumEd} and
+                </if>
+                    <if test="isActivityList != null">
+                        `is_activity` in
+                        <foreach collection="isActivityList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="isActivitySt !=null">
+                    `is_activity` >= #{isActivitySt} and
+                </if>
+                <if test="isActivityEd!=null">
+                    `is_activity` &lt;= #{isActivityEd} and
+                </if>
+                    <if test="activityRelatedIdList != null">
+                        `activity_related_id` in
+                        <foreach collection="activityRelatedIdList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="activityRelatedIdSt !=null">
+                    `activity_related_id` >= #{activityRelatedIdSt} and
+                </if>
+                <if test="activityRelatedIdEd!=null">
+                    `activity_related_id` &lt;= #{activityRelatedIdEd} and
+                </if>
+                    <if test="isDelList != null">
+                        `is_del` in
+                        <foreach collection="isDelList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="isDelSt !=null">
+                    `is_del` >= #{isDelSt} and
+                </if>
+                <if test="isDelEd!=null">
+                    `is_del` &lt;= #{isDelEd} and
+                </if>
+                    <if test="yxSkuIdList != null">
+                        `yx_sku_id` in
+                        <foreach collection="yxSkuIdList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyYxSkuId!=null and fuzzyYxSkuId.size()>0">
+                    (
+                    <foreach collection="fuzzyYxSkuId"  separator="or" item="item">
+                        `Yx_sku_id` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyYxSkuId!=null and rightFuzzyYxSkuId.size()>0">
+                    (
+                    <foreach collection="rightFuzzyYxSkuId"  separator="or" item="item">
+                        `Yx_sku_id` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="inventoryList != null">
+                        `inventory` in
+                        <foreach collection="inventoryList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="inventorySt !=null">
+                    `inventory` >= #{inventorySt} and
+                </if>
+                <if test="inventoryEd!=null">
+                    `inventory` &lt;= #{inventoryEd} and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `specification_id`,
+        `goods_id`,
+        `specification_name`,
+        `specification_price`,
+        `specification_consume_num`,
+        `is_activity`,
+        `activity_related_id`,
+        `is_del`,
+        `yx_sku_id`,
+        `inventory`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof packageModel.EcsSpecificationDTO$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.specificationId==true">
+                        `specification_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.goodsId==true">
+                        `goods_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.specificationName==true">
+                        `specification_name`,
+                    </if>
+                    <if test="fetchFields.fetchFields.specificationPrice==true">
+                        `specification_price`,
+                    </if>
+                    <if test="fetchFields.fetchFields.specificationConsumeNum==true">
+                        `specification_consume_num`,
+                    </if>
+                    <if test="fetchFields.fetchFields.isActivity==true">
+                        `is_activity`,
+                    </if>
+                    <if test="fetchFields.fetchFields.activityRelatedId==true">
+                        `activity_related_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.isDel==true">
+                        `is_del`,
+                    </if>
+                    <if test="fetchFields.fetchFields.yxSkuId==true">
+                        `yx_sku_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.inventory==true">
+                        `inventory`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.specificationId==null">
+                        `specification_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.goodsId==null">
+                        `goods_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.specificationName==null">
+                        `specification_name`,
+                    </if>
+                    <if test="fetchFields.excludeFields.specificationPrice==null">
+                        `specification_price`,
+                    </if>
+                    <if test="fetchFields.excludeFields.specificationConsumeNum==null">
+                        `specification_consume_num`,
+                    </if>
+                    <if test="fetchFields.excludeFields.isActivity==null">
+                        `is_activity`,
+                    </if>
+                    <if test="fetchFields.excludeFields.activityRelatedId==null">
+                        `activity_related_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.isDel==null">
+                        `is_del`,
+                    </if>
+                    <if test="fetchFields.excludeFields.yxSkuId==null">
+                        `yx_sku_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.inventory==null">
+                        `inventory`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof packageModel.EcsSpecificationDTO$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>

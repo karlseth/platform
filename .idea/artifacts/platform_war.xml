@@ -1,0 +1,43 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="platform:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="platform.war">
+      <element id="artifact" artifact-name="platform:war exploded" />
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1.2" />
+        <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.3" />
+        <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+        <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.37" />
+        <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.3" />
+        <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.3.0" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.4.2" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-core:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-web:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.8.RELEASE" />
+        <element id="library" level="project" name="Maven: redis.clients:jedis:2.9.0" />
+      </element>
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: redis.clients:jedis:2.9.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.4.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

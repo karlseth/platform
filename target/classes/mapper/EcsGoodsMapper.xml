@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kz.dao.EcsGoodsMapper">
+
+
+    <resultMap type="com.kz.dto.EcsGoods" id="EcsGoodsMap">
+        <result property="goodsId" column="goods_id"/>
+        <result property="catId" column="cat_id"/>
+        <result property="goodsSn" column="goods_sn"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="goodsNameStyle" column="goods_name_style"/>
+        <result property="clickCount" column="click_count"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="providerName" column="provider_name"/>
+        <result property="goodsNumber" column="goods_number"/>
+        <result property="goodsWeight" column="goods_weight"/>
+        <result property="marketPrice" column="market_price"/>
+        <result property="virtualSales" column="virtual_sales"/>
+        <result property="shopPrice" column="shop_price"/>
+        <result property="promotePrice" column="promote_price"/>
+        <result property="promoteStartDate" column="promote_start_date"/>
+        <result property="promoteEndDate" column="promote_end_date"/>
+        <result property="warnNumber" column="warn_number"/>
+        <result property="keywords" column="keywords"/>
+        <result property="goodsBrief" column="goods_brief"/>
+        <result property="goodsDesc" column="goods_desc"/>
+        <result property="goodsThumb" column="goods_thumb"/>
+        <result property="goodsImg" column="goods_img"/>
+        <result property="originalImg" column="original_img"/>
+        <result property="isReal" column="is_real"/>
+        <result property="extensionCode" column="extension_code"/>
+        <result property="isOnSale" column="is_on_sale"/>
+        <result property="isAloneSale" column="is_alone_sale"/>
+        <result property="isShipping" column="is_shipping"/>
+        <result property="integral" column="integral"/>
+        <result property="addTime" column="add_time"/>
+        <result property="sortOrder" column="sort_order"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="isBest" column="is_best"/>
+        <result property="isNew" column="is_new"/>
+        <result property="isHot" column="is_hot"/>
+        <result property="isPromote" column="is_promote"/>
+        <result property="bonusTypeId" column="bonus_type_id"/>
+        <result property="lastUpdate" column="last_update"/>
+        <result property="goodsType" column="goods_type"/>
+        <result property="sellerNote" column="seller_note"/>
+        <result property="giveIntegral" column="give_integral"/>
+        <result property="rankIntegral" column="rank_integral"/>
+        <result property="suppliersId" column="suppliers_id"/>
+        <result property="isCheck" column="is_check"/>
+        <result property="needIdcard" column="need_idcard"/>
+        <result property="isBonus" column="is_bonus"/>
+        <result property="secondaryTitle" column="secondary_title"/>
+        <result property="tag" column="tag"/>
+        <result property="shippingFee" column="shipping_fee"/>
+        <result property="productionPlace" column="production_place"/>
+        <result property="goodsImg1" column="goods_img1"/>
+        <result property="goodsImg2" column="goods_img2"/>
+        <result property="goodsImg3" column="goods_img3"/>
+        <result property="goodsImg4" column="goods_img4"/>
+        <result property="goodsImg5" column="goods_img5"/>
+        <result property="goodsImg6" column="goods_img6"/>
+        <result property="suppliers" column="suppliers"/>
+        <result property="isShowDesc" column="is_show_desc"/>
+        <result property="description" column="description"/>
+        <result property="specification1Name" column="specification1_name"/>
+        <result property="specification1Price" column="specification1_price"/>
+        <result property="specification1ConsumeNum" column="specification1_consume_num"/>
+        <result property="specification2Name" column="specification2_name"/>
+        <result property="specification2Price" column="specification2_price"/>
+        <result property="specification2ConsumeNum" column="specification2_consume_num"/>
+        <result property="specification3Name" column="specification3_name"/>
+        <result property="specification3Price" column="specification3_price"/>
+        <result property="specification3ConsumeNum" column="specification3_consume_num"/>
+        <result property="specification4Name" column="specification4_name"/>
+        <result property="specification4Price" column="specification4_price"/>
+        <result property="specification4ConsumeNum" column="specification4_consume_num"/>
+        <result property="specification5Name" column="specification5_name"/>
+        <result property="specification5Price" column="specification5_price"/>
+        <result property="specification5ConsumeNum" column="specification5_consume_num"/>
+        <result property="specification6Name" column="specification6_name"/>
+        <result property="specification6Price" column="specification6_price"/>
+        <result property="specification6ConsumeNum" column="specification6_consume_num"/>
+        <result property="specification7Name" column="specification7_name"/>
+        <result property="specification7Price" column="specification7_price"/>
+        <result property="specification7ConsumeNum" column="specification7_consume_num"/>
+        <result property="specification8Name" column="specification8_name"/>
+        <result property="specification8Price" column="specification8_price"/>
+        <result property="specification8ConsumeNum" column="specification8_consume_num"/>
+    </resultMap>
+
+
+    <insert id="insertEcsGoodsByCon" useGeneratedKeys="true" keyProperty="goodsId" parameterType="com.kz.dto.EcsGoods">
+        INSERT INTO `ecs_goods`
+        (
+        <trim suffixOverrides=",">
+            <if test="goodsId!=null">
+                `goods_id`,
+            </if>
+            <if test="catId!=null">
+                `cat_id`,
+            </if>
+            <if test="goodsSn!=null">
+                `goods_sn`,
+            </if>
+            <if test="goodsName!=null">
+                `goods_name`,
+            </if>
+            <if test="goodsNameStyle!=null">
+                `goods_name_style`,
+            </if>
+            <if test="clickCount!=null">
+                `click_count`,
+            </if>
+            <if test="brandId!=null">
+                `brand_id`,
+            </if>
+            <if test="providerName!=null">
+                `provider_name`,
+            </if>
+            <if test="goodsNumber!=null">
+                `goods_number`,
+            </if>
+            <if test="goodsWeight!=null">
+                `goods_weight`,
+            </if>
+            <if test="marketPrice!=null">
+                `market_price`,
+            </if>
+            <if test="virtualSales!=null">
+                `virtual_sales`,
+            </if>
+            <if test="shopPrice!=null">
+                `shop_price`,
+            </if>
+            <if test="promotePrice!=null">
+                `promote_price`,
+            </if>
+            <if test="promoteStartDate!=null">
+                `promote_start_date`,
+            </if>
+            <if test="promoteEndDate!=null">
+                `promote_end_date`,
+            </if>
+            <if test="warnNumber!=null">
+                `warn_number`,
+            </if>
+            <if test="keywords!=null">
+                `keywords`,
+            </if>
+            <if test="goodsBrief!=null">
+                `goods_brief`,
+            </if>
+            <if test="goodsDesc!=null">
+                `goods_desc`,
+            </if>
+            <if test="goodsThumb!=null">
+                `goods_thumb`,
+            </if>
+            <if test="goodsImg!=null">
+                `goods_img`,
+            </if>
+            <if test="originalImg!=null">
+                `original_img`,
+            </if>
+            <if test="isReal!=null">
+                `is_real`,
+            </if>
+            <if test="extensionCode!=null">
+                `extension_code`,
+            </if>
+            <if test="isOnSale!=null">
+                `is_on_sale`,
+            </if>
+            <if test="isAloneSale!=null">
+                `is_alone_sale`,
+            </if>
+            <if test="isShipping!=null">
+                `is_shipping`,
+            </if>
+            <if test="integral!=null">
+                `integral`,
+            </if>
+            <if test="addTime!=null">
+                `add_time`,
+            </if>
+            <if test="sortOrder!=null">
+                `sort_order`,
+            </if>
+            <if test="isDelete!=null">
+                `is_delete`,
+            </if>
+            <if test="isBest!=null">
+                `is_best`,
+            </if>
+            <if test="isNew!=null">
+                `is_new`,
+            </if>
+            <if test="isHot!=null">
+                `is_hot`,
+            </if>
+            <if test="isPromote!=null">
+                `is_promote`,
+            </if>
+            <if test="bonusTypeId!=null">
+                `bonus_type_id`,
+            </if>
+            <if test="lastUpdate!=null">
+                `last_update`,
+            </if>
+            <if test="goodsType!=null">
+                `goods_type`,
+            </if>
+            <if test="sellerNote!=null">
+                `seller_note`,
+            </if>
+            <if test="giveIntegral!=null">
+                `give_integral`,
+            </if>
+            <if test="rankIntegral!=null">
+                `rank_integral`,
+            </if>
+            <if test="suppliersId!=null">
+                `suppliers_id`,
+            </if>
+            <if test="isCheck!=null">
+                `is_check`,
+            </if>
+            <if test="needIdcard!=null">
+                `need_idcard`,
+            </if>
+            <if test="isBonus!=null">
+                `is_bonus`,
+            </if>
+            <if test="secondaryTitle!=null">
+                `secondary_title`,
+            </if>
+            <if test="tag!=null">
+                `tag`,
+            </if>
+            <if test="shippingFee!=null">
+                `shipping_fee`,
+            </if>
+            <if test="productionPlace!=null">
+                `production_place`,
+            </if>
+            <if test="goodsImg1!=null">
+                `goods_img1`,
+            </if>
+            <if test="goodsImg2!=null">
+                `goods_img2`,
+            </if>
+            <if test="goodsImg3!=null">
+                `goods_img3`,
+            </if>
+            <if test="goodsImg4!=null">
+                `goods_img4`,
+            </if>
+            <if test="goodsImg5!=null">
+                `goods_img5`,
+            </if>
+            <if test="goodsImg6!=null">
+                `goods_img6`,
+            </if>
+            <if test="suppliers!=null">
+                `suppliers`,
+            </if>
+            <if test="isShowDesc!=null">
+                `is_show_desc`,
+            </if>
+            <if test="description!=null">
+                `description`,
+            </if>
+            <if test="specification1Name!=null">
+                `specification1_name`,
+            </if>
+            <if test="specification1Price!=null">
+                `specification1_price`,
+            </if>
+            <if test="specification1ConsumeNum!=null">
+                `specification1_consume_num`,
+            </if>
+            <if test="specification2Name!=null">
+                `specification2_name`,
+            </if>
+            <if test="specification2Price!=null">
+                `specification2_price`,
+            </if>
+            <if test="specification2ConsumeNum!=null">
+                `specification2_consume_num`,
+            </if>
+            <if test="specification3Name!=null">
+                `specification3_name`,
+            </if>
+            <if test="specification3Price!=null">
+                `specification3_price`,
+            </if>
+            <if test="specification3ConsumeNum!=null">
+                `specification3_consume_num`,
+            </if>
+            <if test="specification4Name!=null">
+                `specification4_name`,
+            </if>
+            <if test="specification4Price!=null">
+                `specification4_price`,
+            </if>
+            <if test="specification4ConsumeNum!=null">
+                `specification4_consume_num`,
+            </if>
+            <if test="specification5Name!=null">
+                `specification5_name`,
+            </if>
+            <if test="specification5Price!=null">
+                `specification5_price`,
+            </if>
+            <if test="specification5ConsumeNum!=null">
+                `specification5_consume_num`,
+            </if>
+            <if test="specification6Name!=null">
+                `specification6_name`,
+            </if>
+            <if test="specification6Price!=null">
+                `specification6_price`,
+            </if>
+            <if test="specification6ConsumeNum!=null">
+                `specification6_consume_num`,
+            </if>
+            <if test="specification7Name!=null">
+                `specification7_name`,
+            </if>
+            <if test="specification7Price!=null">
+                `specification7_price`,
+            </if>
+            <if test="specification7ConsumeNum!=null">
+                `specification7_consume_num`,
+            </if>
+            <if test="specification8Name!=null">
+                `specification8_name`,
+            </if>
+            <if test="specification8Price!=null">
+                `specification8_price`,
+            </if>
+            <if test="specification8ConsumeNum!=null">
+                `specification8_consume_num`,
+            </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+            <if test="goodsId!=null">
+                #{goodsId},
+            </if>
+            <if test="catId!=null">
+                #{catId},
+            </if>
+            <if test="goodsSn!=null">
+                #{goodsSn},
+            </if>
+            <if test="goodsName!=null">
+                #{goodsName},
+            </if>
+            <if test="goodsNameStyle!=null">
+                #{goodsNameStyle},
+            </if>
+            <if test="clickCount!=null">
+                #{clickCount},
+            </if>
+            <if test="brandId!=null">
+                #{brandId},
+            </if>
+            <if test="providerName!=null">
+                #{providerName},
+            </if>
+            <if test="goodsNumber!=null">
+                #{goodsNumber},
+            </if>
+            <if test="goodsWeight!=null">
+                #{goodsWeight},
+            </if>
+            <if test="marketPrice!=null">
+                #{marketPrice},
+            </if>
+            <if test="virtualSales!=null">
+                #{virtualSales},
+            </if>
+            <if test="shopPrice!=null">
+                #{shopPrice},
+            </if>
+            <if test="promotePrice!=null">
+                #{promotePrice},
+            </if>
+            <if test="promoteStartDate!=null">
+                #{promoteStartDate},
+            </if>
+            <if test="promoteEndDate!=null">
+                #{promoteEndDate},
+            </if>
+            <if test="warnNumber!=null">
+                #{warnNumber},
+            </if>
+            <if test="keywords!=null">
+                #{keywords},
+            </if>
+            <if test="goodsBrief!=null">
+                #{goodsBrief},
+            </if>
+            <if test="goodsDesc!=null">
+                #{goodsDesc},
+            </if>
+            <if test="goodsThumb!=null">
+                #{goodsThumb},
+            </if>
+            <if test="goodsImg!=null">
+                #{goodsImg},
+            </if>
+            <if test="originalImg!=null">
+                #{originalImg},
+            </if>
+            <if test="isReal!=null">
+                #{isReal},
+            </if>
+            <if test="extensionCode!=null">
+                #{extensionCode},
+            </if>
+            <if test="isOnSale!=null">
+                #{isOnSale},
+            </if>
+            <if test="isAloneSale!=null">
+                #{isAloneSale},
+            </if>
+            <if test="isShipping!=null">
+                #{isShipping},
+            </if>
+            <if test="integral!=null">
+                #{integral},
+            </if>
+            <if test="addTime!=null">
+                #{addTime},
+            </if>
+            <if test="sortOrder!=null">
+                #{sortOrder},
+            </if>
+            <if test="isDelete!=null">
+                #{isDelete},
+            </if>
+            <if test="isBest!=null">
+                #{isBest},
+            </if>
+            <if test="isNew!=null">
+                #{isNew},
+            </if>
+            <if test="isHot!=null">
+                #{isHot},
+            </if>
+            <if test="isPromote!=null">
+                #{isPromote},
+            </if>
+            <if test="bonusTypeId!=null">
+                #{bonusTypeId},
+            </if>
+            <if test="lastUpdate!=null">
+                #{lastUpdate},
+            </if>
+            <if test="goodsType!=null">
+                #{goodsType},
+            </if>
+            <if test="sellerNote!=null">
+                #{sellerNote},
+            </if>
+            <if test="giveIntegral!=null">
+                #{giveIntegral},
+            </if>
+            <if test="rankIntegral!=null">
+                #{rankIntegral},
+            </if>
+            <if test="suppliersId!=null">
+                #{suppliersId},
+            </if>
+            <if test="isCheck!=null">
+                #{isCheck},
+            </if>
+            <if test="needIdcard!=null">
+                #{needIdcard},
+            </if>
+            <if test="isBonus!=null">
+                #{isBonus},
+            </if>
+            <if test="secondaryTitle!=null">
+                #{secondaryTitle},
+            </if>
+            <if test="tag!=null">
+                #{tag},
+            </if>
+            <if test="shippingFee!=null">
+                #{shippingFee},
+            </if>
+            <if test="productionPlace!=null">
+                #{productionPlace},
+            </if>
+            <if test="goodsImg1!=null">
+                #{goodsImg1},
+            </if>
+            <if test="goodsImg2!=null">
+                #{goodsImg2},
+            </if>
+            <if test="goodsImg3!=null">
+                #{goodsImg3},
+            </if>
+            <if test="goodsImg4!=null">
+                #{goodsImg4},
+            </if>
+            <if test="goodsImg5!=null">
+                #{goodsImg5},
+            </if>
+            <if test="goodsImg6!=null">
+                #{goodsImg6},
+            </if>
+            <if test="suppliers!=null">
+                #{suppliers},
+            </if>
+            <if test="isShowDesc!=null">
+                #{isShowDesc},
+            </if>
+            <if test="description!=null">
+                #{description},
+            </if>
+            <if test="specification1Name!=null">
+                #{specification1Name},
+            </if>
+            <if test="specification1Price!=null">
+                #{specification1Price},
+            </if>
+            <if test="specification1ConsumeNum!=null">
+                #{specification1ConsumeNum},
+            </if>
+            <if test="specification2Name!=null">
+                #{specification2Name},
+            </if>
+            <if test="specification2Price!=null">
+                #{specification2Price},
+            </if>
+            <if test="specification2ConsumeNum!=null">
+                #{specification2ConsumeNum},
+            </if>
+            <if test="specification3Name!=null">
+                #{specification3Name},
+            </if>
+            <if test="specification3Price!=null">
+                #{specification3Price},
+            </if>
+            <if test="specification3ConsumeNum!=null">
+                #{specification3ConsumeNum},
+            </if>
+            <if test="specification4Name!=null">
+                #{specification4Name},
+            </if>
+            <if test="specification4Price!=null">
+                #{specification4Price},
+            </if>
+            <if test="specification4ConsumeNum!=null">
+                #{specification4ConsumeNum},
+            </if>
+            <if test="specification5Name!=null">
+                #{specification5Name},
+            </if>
+            <if test="specification5Price!=null">
+                #{specification5Price},
+            </if>
+            <if test="specification5ConsumeNum!=null">
+                #{specification5ConsumeNum},
+            </if>
+            <if test="specification6Name!=null">
+                #{specification6Name},
+            </if>
+            <if test="specification6Price!=null">
+                #{specification6Price},
+            </if>
+            <if test="specification6ConsumeNum!=null">
+                #{specification6ConsumeNum},
+            </if>
+            <if test="specification7Name!=null">
+                #{specification7Name},
+            </if>
+            <if test="specification7Price!=null">
+                #{specification7Price},
+            </if>
+            <if test="specification7ConsumeNum!=null">
+                #{specification7ConsumeNum},
+            </if>
+            <if test="specification8Name!=null">
+                #{specification8Name},
+            </if>
+            <if test="specification8Price!=null">
+                #{specification8Price},
+            </if>
+            <if test="specification8ConsumeNum!=null">
+                #{specification8ConsumeNum},
+            </if>
+        </trim>
+        )
+    </insert>
+    
+    <select id="getGoodsListByCustomizedParams" parameterType="map" resultMap="EcsGoodsMap">
+        select goods_id, goods_name, is_delete, is_on_sale, suppliers_id, extension_code from ecs_goods
+        where 1=1
+        <if test="isDelete != null">
+            and is_delete=#{isDelete}
+        </if>
+        <if test="isOnSale != null">
+            and is_on_sale=#{isOnSale}
+        </if>
+        <if test="suppliersId != null">
+            and suppliers_id=#{suppliersId}
+        </if>
+        <if test="extensionCode">
+            and extension_code=#{extensionCode}
+        </if>
+        <if test="pageIndex != null">
+            <if test="pageSize != null">
+                LIMIT #{pageIndex},#{pageSize}
+            </if>
+        </if>
+    </select>
+
+    <select id="getGoodsIdsList" parameterType="map" resultType="map">
+        select extension_code,goods_id from ecs_goods
+        where 1=1
+        <if test="isDelete != null">
+            and is_delete=#{isDelete}
+        </if>
+        <if test="isOnSale != null">
+            and is_on_sale=#{isOnSale}
+        </if>
+        <if test="suppliersId != null">
+            and suppliers_id=#{suppliersId}
+        </if>
+        <if test="extensionCode">
+            and extension_code=#{extensionCode}
+        </if>
+    </select>
+
+    <update id="updateGoodsDescById" parameterType="map">
+        UPDATE ecs_goods SET goods_desc=#{goodsDesc}, last_update=#{lastUpdate} WHERE goods_id=#{goodsId} and extension_code=#{extensionCode}
+    </update>
+
+
+</mapper>

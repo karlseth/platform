@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kz.dao.EcsSpecificationMapper">
+
+    <insert id="insertEcsSpecificationDTO" keyProperty="specificationId" useGeneratedKeys="true" parameterType="com.kz.dto.EcsSpecificationDTO">
+        INSERT INTO `ecs_specification`
+        (
+        <trim suffixOverrides=",">
+            <if test="specificationId!=null">
+                `specification_id`,
+            </if>
+            <if test="goodsId!=null">
+                `goods_id`,
+            </if>
+            <if test="specificationName!=null">
+                `specification_name`,
+            </if>
+            <if test="specificationPrice!=null">
+                `specification_price`,
+            </if>
+            <if test="specificationConsumeNum!=null">
+                `specification_consume_num`,
+            </if>
+            <if test="isActivity!=null">
+                `is_activity`,
+            </if>
+            <if test="activityRelatedId!=null">
+                `activity_related_id`,
+            </if>
+            <if test="isDel!=null">
+                `is_del`,
+            </if>
+            <if test="yxSkuId!=null">
+                `yx_sku_id`,
+            </if>
+            <if test="inventory!=null">
+                `inventory`,
+            </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+            <if test="specificationId!=null">
+                #{specificationId},
+            </if>
+            <if test="goodsId!=null">
+                #{goodsId},
+            </if>
+            <if test="specificationName!=null">
+                #{specificationName},
+            </if>
+            <if test="specificationPrice!=null">
+                #{specificationPrice},
+            </if>
+            <if test="specificationConsumeNum!=null">
+                #{specificationConsumeNum},
+            </if>
+            <if test="isActivity!=null">
+                #{isActivity},
+            </if>
+            <if test="activityRelatedId!=null">
+                #{activityRelatedId},
+            </if>
+            <if test="isDel!=null">
+                #{isDel},
+            </if>
+            <if test="yxSkuId!=null">
+                #{yxSkuId},
+            </if>
+            <if test="inventory!=null">
+                #{inventory},
+            </if>
+        </trim>
+        )
+    </insert>
+
+
+</mapper>

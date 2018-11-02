@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kz.dao.userMapper">
+    <resultMap id="UserDTO" type="com.kz.dto.UserDTO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="gender" jdbcType="INTEGER" property="gender" />
+        <result column="auth" property="auth" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="update_time" property="updateTime" jdbcType="DATE" />
+    </resultMap>
+
+
+    <select id="getKzMemberList" parameterType="map" resultMap="UserDTO">
+        SELECT * FROM kz_member
+        <where>
+            1=1
+        </where>
+        <if test="pageIndex != null">
+            <if test="pageSize != null">
+                LIMIT #{pageIndex},#{pageSize}
+            </if>
+        </if>
+    </select>
+
+    <insert id="insertKzMember" parameterType="com.kz.dto.UserDTO">
+        INSERT INTO kz_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="auth != null">
+                auth,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix=" VALUES (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="age != null">
+                #{age},
+            </if>
+            <if test="gender != null">
+                #{gender},
+            </if>
+            <if test="auth != null">
+                #{auth},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>
